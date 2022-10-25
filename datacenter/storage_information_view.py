@@ -13,8 +13,8 @@ def storage_information_view(request):
 			{
 				'who_entered': visit.passcard,
 				'entered_at': visit.entered_at,
-				'duration': str(duration).split(".")[0],
-				'is_strange': is_visit_long(formatted_duration),
+				'duration': formatted_duration,
+				'is_strange': is_visit_long(duration),
 			}
 		)
 	context = {
