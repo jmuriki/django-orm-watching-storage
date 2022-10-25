@@ -43,6 +43,7 @@ def format_duration(duration):
     return str(duration).split(".")[0]
 
 
-def is_visit_long(visit, minutes=60):
-    visit = visit // 60
-    return visit > minutes
+def is_visit_long(duration, minutes=60):
+    seconds = duration.total_seconds()
+    duration_minutes = seconds // 60
+    return duration_minutes > minutes
