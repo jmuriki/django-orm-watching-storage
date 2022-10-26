@@ -40,7 +40,10 @@ def get_duration(visit):
 
 
 def format_duration(duration):
-    return str(duration).split(".")[0]
+    total_seconds = duration.total_seconds()
+    hours = int(total_seconds // 3600)
+    minutes = int((total_seconds % 3600) // 60)
+    return f"{hours}ч {minutes}мин"
 
 
 def is_visit_long(duration, minutes=60):
