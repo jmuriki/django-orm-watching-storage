@@ -36,17 +36,15 @@ def get_duration(visit):
         delta = localtime(visit.leaved_at) - localtime(visit.entered_at)
     else:
         delta = localtime(now()) - localtime(visit.entered_at)
-    return delta
+    return delta.total_seconds()
 
 
 def format_duration(duration):
-    total_seconds = duration.total_seconds()
-    hours = int(total_seconds // 3600)
-    minutes = int((total_seconds % 3600) // 60)
+    hours = int(duration // 3600)
+    minutes = int((duration % 3600) // 60)
     return f"{hours}ч {minutes}мин"
 
 
 def is_visit_long(duration, minutes=60):
-    seconds = duration.total_seconds()
-    duration_minutes = seconds // 60
+    duration_minutes = duration // 60
     return duration_minutes > minutes
